@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ما لم تقله الكلمات | ديوان فاطمة الزهراء</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap');
+:root{--bg:#100f20;--panel:#1b1930;--gold:#e7c77b;--rose:#d98baf;--text:#f8f1e8;--muted:#c8bdd2}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#302044 0,#100f20 58%);color:var(--text);font-family:Cairo,sans-serif;min-height:100vh}
+header{padding:22px 6%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid #ffffff15}
+.logo{font-family:Amiri,serif;color:var(--gold);font-size:25px}.nav a{color:var(--text);text-decoration:none;margin:0 9px;font-size:14px}
+main{max-width:1050px;margin:auto;padding:32px 18px}.hero{text-align:center;padding:55px 12px 42px}.moon{font-size:40px;animation:float 4s ease-in-out infinite}.hero h1{font: bold clamp(35px,7vw,65px) Amiri,serif;color:var(--gold);margin:12px 0}.hero p{color:var(--muted);font:22px Amiri,serif}
+@keyframes float{50%{transform:translateY(-9px)}}@keyframes rise{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+section{margin:28px 0 45px}h2{font: bold 30px Amiri,serif;color:var(--gold)}.intro{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}.card{background:linear-gradient(145deg,#24203b,#19172c);border:1px solid #e7c77b35;border-radius:18px;padding:22px;animation:rise .7s both;cursor:pointer;transition:.25s}.card:hover{transform:translateY(-5px);border-color:var(--gold)}.card h3{font:25px Amiri,serif;color:var(--rose);margin:0 0 10px}.excerpt{font:20px/1.9 Amiri,serif;white-space:pre-line}.hint{font-size:12px;color:var(--gold);margin-top:12px}
+button{font-family:Cairo,sans-serif;border:1px solid #e7c77b66;background:#342944;color:var(--text);border-radius:12px;padding:10px 17px;cursor:pointer}button.primary{background:linear-gradient(120deg,#b98950,#8b567d);color:white;border:0}.tools{display:flex;gap:10px;flex-wrap:wrap}.thought{border-right:3px solid var(--rose);padding:10px 18px;font:22px Amiri,serif;color:#e8d9eb}.footer{text-align:center;color:var(--muted);padding:25px;border-top:1px solid #ffffff15}
+dialog{background:#1b1930;color:var(--text);border:1px solid #e7c77b66;border-radius:20px;width:min(92%,650px);padding:25px}dialog::backdrop{background:#05040bc9}.full{font:24px/2 Amiri,serif;white-space:pre-line}.formrow{display:grid;gap:8px;margin:12px 0}input,textarea{background:#100f20;color:white;border:1px solid #ffffff2c;border-radius:10px;padding:12px;font:16px Cairo,sans-serif}textarea{min-height:180px;resize:vertical}.empty{color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<header><div class="logo">✦ ما لم تقله الكلمات</div><nav class="nav"><a href="#diwan">الديوان</a><a href="#studio">الاستوديو</a><a href="#about">عن الديوان</a></nav></header>
+<main>
+<div class="hero"><div class="moon">☾</div><h1>ديوان فاطمة الزهراء</h1><p>مساحةٌ للكلمات التي لم تجد طريقها إلى الصوت</p></div>
+<section id="diwan"><h2>من الديوان</h2><p class="intro">اضغطي على أي قصيدة لقراءتها كاملة.</p><div class="cards" id="poems"></div></section>
+<section id="studio"><h2>استوديو الشعراء</h2><p class="intro">مجتمع أدبي يجمع أصحاب الحرف والخيال.</p><div class="cards">
+<div class="card"><h3>ساحة القصائد</h3><p>مساحة لمشاركة النصوص والتأملات.</p></div>
+<div class="card"><h3>مجلس الحروف</h3><p>لقاء أدبي للحوار وتبادل الأفكار.</p></div>
+<div class="card"><h3>ورشة الكتابة</h3><p>نتعلم ونراجع وننمو بالكلمة.</p></div>
+</div><p class="empty">واجهة الاستوديو تجريبية حاليًا؛ الحسابات والدردشة تحتاج ربطًا بخدمة قاعدة بيانات ونشر الموقع.</p></section>
+<section><h2>أضيفي إلى ديوانك</h2><p class="intro">يمكنك كتابة قصيدة وحفظها على هذا المتصفح.</p><button class="primary" id="add">＋ أضيفي قصيدة</button></section>
+<section id="about"><h2>عن الديوان</h2><div class="thought">هنا تُترك للكلمات مساحةٌ لتقول ما عجز عنه الصمت.</div></section>
+</main><div class="footer">كُتبت هذه المساحة بمحبةٍ للحرف ✦</div>
+<dialog id="reader"><h2 id="readTitle"></h2><div class="full" id="readText"></div><p id="readAuthor" class="intro"></p><button id="closeRead">عودة إلى الديوان</button></dialog>
+<dialog id="editor"><h2>قصيدة جديدة</h2><form id="poemForm"><div class="formrow"><label>عنوان القصيدة</label><input id="title" required maxlength="100"></div><div class="formrow"><label>الأبيات</label><textarea id="body" required></textarea></div><div class="tools"><button class="primary" type="submit">حفظ القصيدة</button><button type="button" id="cancel">إلغاء</button></div></form></dialog>
+<script>
+const starter=[
+{title:"على ساحل الأحزان",text:"على ساحلِ الأحزانِ والناسُ نيامُ…\\nتسيرُ خطايَ وفي القلبِ كلامُ",author:"نص تجريبي — استبدليه بقصيدتك"},
+{title:"وترٌ في القلب",text:"وفي القلبِ وترٌ لا يبوحُ\\nإذا مرَّ طيفٌ بهِ يستريحُ",author:"نص تجريبي"},
+{title:"إلى ما لا يُقال",text:"للكلماتِ أبوابٌ خفيّةٌ\\nوللصمتِ أحيانًا ألفُ حكاية",author:"نص تجريبي"}];
+let poems=[];try{poems=JSON.parse(localStorage.getItem("diwanPoems")||"[]")}catch(e){}
+function render(){const list=[...starter,...poems];document.getElementById("poems").innerHTML=list.map((p,i)=>`<article class="card" tabindex="0" data-index="${i}"><h3>${esc(p.title)}</h3><div class="excerpt">${esc(p.text.split("\\n").slice(0,2).join("\\n"))}</div><div class="hint">اقرئي القصيدة كاملة ←</div></article>`).join("");document.querySelectorAll("#poems .card").forEach(c=>{const open=()=>show(list[+c.dataset.index]);c.addEventListener("click",open);c.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open()}})})}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function show(p){document.getElementById("readTitle").textContent=p.title;document.getElementById("readText").textContent=p.text;document.getElementById("readAuthor").textContent=p.author||"";document.getElementById("reader").showModal()}
+document.getElementById("closeRead").onclick=()=>document.getElementById("reader").close();
+document.getElementById("add").onclick=()=>document.getElementById("editor").showModal();document.getElementById("cancel").onclick=()=>document.getElementById("editor").close();
+document.getElementById("poemForm").onsubmit=e=>{e.preventDefault();poems.unshift({title:document.getElementById("title").value.trim(),text:document.getElementById("body").value.trim(),author:"من ديوانك"});try{localStorage.setItem("diwanPoems",JSON.stringify(poems))}catch(err){alert("تعذّر الحفظ في هذا المتصفح.")}e.target.reset();document.getElementById("editor").close();render()};
+render();
+</script>
+</body></html>
